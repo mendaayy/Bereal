@@ -1,34 +1,55 @@
 * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
 	background-color: black;
 }
-
-.split {
-	overflow: hidden;
+	
+.camera-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
-
-.web {
-	float: left;
+	
+.webcam-screen {
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
-
+	
+#webcam,
 #picture {
-	position: relative;
-	margin-left: 615px;
-    margin-top: -70px;
-    display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
-
-.red-container {
+	
+.capture-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: absolute;
-	background-color: lightgrey;
-	border-radius: 30px;
-	padding: 5px;
-	bottom: 40px;
-	box-shadow: 2px 4px 5px 1px rgba(0,0,0,0.2);
+	bottom: 70px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1;
 }
-
+	
 .red {
-	background-image: linear-gradient(to bottom, #ad0a0a, #ff4545); 
-	border-radius: 25px;
-	padding: 25px;
+	background-image: linear-gradient(to bottom, #ad0a0a, #ff4545);
+	border-radius: 50%;
+	padding: 20px;
 	border: 2px solid #323232;
+	width: 150px;
+	height: 150px;
+	box-shadow: 2px 4px 5px 1px rgba(0,0,0,0.2);
 }
