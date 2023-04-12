@@ -6,6 +6,7 @@ class Camera {
   this.videoElement = document.getElementById('webcam');
   this.canvasElement = document.getElementById('picture');
   this.captureButton = document.getElementById('capture');
+  
   }
 
 

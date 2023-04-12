@@ -3,7 +3,7 @@ const cacheName="cache-v1";
 const appFiles=[
 	"manifest.json",
 	"js/app.js",
-    "js/cam.js",
+  "js/cam.js",
 	"css/style.css",
 	"./",
   "index.html"
