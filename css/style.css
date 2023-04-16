@@ -12,17 +12,25 @@ html, body{
     object-fit: cover;
 }
 
+.capture-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    height: 160px;
+    background-color: black;
+    z-index: 0;
+    position: absolute;
+}
+
 #camera--output{
     transform: scaleX(-1);
 }
 
-video::-webkit-media-controls {
-    opacity: 0;
-}
-
 .taken {
-    height: 150px!important;
-    width: 120px!important;
+    height: 250px!important;
+    width: 150px!important;
     transition: all 0.5s ease-in;
     border: solid 2px white;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
@@ -40,6 +48,25 @@ video::-webkit-media-controls {
     font-size: 5rem;
     font-weight: bold;
     color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.download-button {
+    margin-left: 220px;
+}
+
+canvas {
+    transform: none !important;
+}
+  
+
+#download--button {
+    background-color: white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: none;
+    border: 1px solid black;
 }
 
 .capture-button {
@@ -47,20 +74,26 @@ video::-webkit-media-controls {
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 70px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
 }
 
-.red {
-    background-image: linear-gradient(to bottom, #ad0a0a, #ff4545);
+#download--button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.color {
+    background-color: black;
     border-radius: 50%;
     padding: 20px;
-    border: 2px solid #323232;
+    border: 6px solid white;
     width: 80px;
     height: 80px;
-    box-shadow: 2px 4px 5px 1px rgba(0,0,0,0.2);
     left: calc(50% - 100px);
 }
 

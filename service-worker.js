@@ -4,6 +4,7 @@ const appFiles=[
 	"manifest.json",
 	"js/app.js",
   "js/cam.js",
+  "images/download.png",
 	"css/style.css",
 	"./",
   "index.html"

@@ -18,14 +18,23 @@
         <video id="camera--view" autoplay playsinline></video>
         <!-- Camera output -->
         <img src="//:0" alt="" id="camera--output">
-        <!-- Camera trigger -->
-		<div class="capture-button">
-			<button class="red" id="camera--trigger"></button>
-		</div>
         
     </main>
+
+    <!-- Camera trigger -->
+    <div class="capture-bg">
+        <div class="capture-button">
+            <button class="color" id="camera--trigger"></button>
+        </div>
+        <div class="download-button">
+            <button id="download--button"><img src="images/download.png"></button>
+        </div>
+    </div>
+    
     <!-- Reference to your JavaScript file -->
     <script src="js/app.js"></script>
     <script src="js/cam.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
 </body>
 </html>

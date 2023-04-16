@@ -2,9 +2,11 @@
 var frontCamera = { video: { facingMode: { exact: "user" } }, audio: false };
 var backCamera = { video: { facingMode: { exact: "environment" } }, audio: false };
 var currentCamera = frontCamera;
+var downloadButton = document.getElementById('download--button');
 
 // Define constants
-const cameraView = document.querySelector("#camera--view"),
+const camera = document.querySelector("#camera"),
+    cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
     cameraSensor = document.querySelector("#camera--sensor"),
     cameraTrigger = document.querySelector("#camera--trigger")
@@ -53,7 +55,7 @@ cameraTrigger.onclick = function() {
             // Toggle between front and back cameras
             if (currentCamera === frontCamera) {
                 cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-                cameraOutput.src = cameraSensor.toDataURL("image/webp");
+                cameraOutput.src = cameraSensor.toDataURL("image/png");
                 cameraOutput.classList.add("taken");
                 currentCamera = backCamera;
             } else {
@@ -63,7 +65,24 @@ cameraTrigger.onclick = function() {
                 cameraView.style.display = "none";
                 cameraSensor.style.display = "block";
                 currentCamera = frontCamera;
+                downloadButton.style.display = "block";
             }
+
+            function takeScreenshot() {
+                html2canvas(camera).then(function(canvas) {
+                  var link = document.createElement('a');
+                  link.download = 'screenshot.png';
+                  link.href = canvas.toDataURL();
+                  link.click();
+                });
+              }
+              
+              // Call the takeScreenshot() function when the download button is clicked
+              downloadButton.addEventListener('click', function() {
+                takeScreenshot();
+              });
+              
+            
             // Restart the camera stream with the new camera
             cameraView.srcObject.getTracks().forEach(function(track) {
                 track.stop();
