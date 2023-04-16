@@ -1,65 +1,77 @@
-// Define a Camera class to handle camera related functionalities
-class Camera {
-  // Create Camera object
-	constructor() {
-  // Initialize DOM elements
-  this.videoElement = document.getElementById('webcam');
-  this.canvasElement = document.getElementById('picture');
-  this.captureButton = document.getElementById('capture');
-  
-  }
+// Set constraints for the video stream
+var frontCamera = { video: { facingMode: { exact: "user" } }, audio: false };
+var backCamera = { video: { facingMode: { exact: "environment" } }, audio: false };
+var currentCamera = frontCamera;
 
+// Define constants
+const cameraView = document.querySelector("#camera--view"),
+    cameraOutput = document.querySelector("#camera--output"),
+    cameraSensor = document.querySelector("#camera--sensor"),
+    cameraTrigger = document.querySelector("#camera--trigger")
 
-  /*
-    Function to get media stream from camera.
-    @async
-  */
-  async getMediaStream() {
-      try {
-        const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
-        this.setVideoStream(mediaStream);
-    } catch (error) {
-        // Handle Errors
-        console.error('Unable to get media stream:', error);
-        alert('Unable to access camera, please check camera permission.');
+// Access the device camera and stream to cameraView
+function cameraStart() {
+    navigator.mediaDevices
+        .getUserMedia(currentCamera)
+        .then(function(stream) {
+        track = stream.getTracks()[0];
+        cameraView.srcObject = stream;
+    })
+    .catch(function(error) {
+        console.error("Oops. Something is broken.", error);
+    });
+
+    if (currentCamera === backCamera){
+        cameraView.style.transform = "scaleX(1)";
+    } else {
+        cameraView.style.transform = "scaleX(-1)";
     }
-  }
-
-
-  /**
-    Function to set video stream to video element.
-    @param {MediaStream} mediaStream - The media stream from camera.
-  */
-  setVideoStream(mediaStream) {
-    this.videoElement.srcObject = mediaStream;
-    this.videoElement.style.display = "block";
-  }
-
-
-  /**
-    Function to take a picture and display it on canvas.
-  */
-    takePicture() {
-      const context = this.canvasElement.getContext('2d');
-      this.canvasElement.width = this.videoElement.videoWidth;
-      this.canvasElement.height = this.videoElement.videoHeight;
-      context.drawImage(this.videoElement, 0, 0, this.videoElement.videoWidth, this.videoElement.videoHeight);
-      context.lineWidth = 60;
-      this.videoElement.style.display = "none";
-      this.canvasElement.style.display = "block";
-  }
-  
 }
 
-// Initialize the camera object and attach event listener
-const camera = new Camera();
+// Take a picture when cameraTrigger is tapped
+cameraTrigger.onclick = function() {
+    cameraView.style.display = "block";
 
-// Add click event listener to the capture button
-camera.captureButton.addEventListener('click', () => {
-  camera.takePicture();
-});
+    var count = 3; // Set the countdown time
+    var countdown = document.createElement('div');
+    countdown.setAttribute('id', 'countdown');
+    countdown.innerHTML = count;
+    document.body.appendChild(countdown);
 
-// Get the media stream from camera when page is loaded
-window.addEventListener('load', () => {
-  camera.getMediaStream();
-});
+    var countdownInterval = setInterval(function() {
+        console.log(count)
+        count--;
+        countdown.innerHTML = count;
+
+        cameraSensor.width = cameraView.videoWidth;
+        cameraSensor.height = cameraView.videoHeight;
+
+        if (count === 0) {
+            clearInterval(countdownInterval);
+            document.body.removeChild(countdown);
+
+            // Toggle between front and back cameras
+            if (currentCamera === frontCamera) {
+                cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
+                cameraOutput.src = cameraSensor.toDataURL("image/webp");
+                cameraOutput.classList.add("taken");
+                currentCamera = backCamera;
+            } else {
+                cameraView.style.display = "none";
+                cameraSensor.getContext("2d").drawImage(cameraView, 0, 0, cameraView.videoWidth, cameraView.videoHeight);
+                cameraSensor.lineWidth = 60;
+                cameraView.style.display = "none";
+                cameraSensor.style.display = "block";
+                currentCamera = frontCamera;
+            }
+            // Restart the camera stream with the new camera
+            cameraView.srcObject.getTracks().forEach(function(track) {
+                track.stop();
+            });
+            cameraStart();
+        }
+    }, 1000);
+};
+
+// Start the video stream when the window loads
+window.addEventListener("load", cameraStart, false);

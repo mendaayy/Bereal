@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html>
+<html lang=”en”>
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Dual Camera</title>
 	<meta name="author" content="Mendy Liang">
@@ -11,20 +10,22 @@
 	<link rel="manifest" href="manifest.json">
 </head>
 <body>
-	<div class="camera-container">
-		<div class="webcam-screen">
-			<video id="webcam" autoplay playsinline></video>
-		</div>
-
-		<!-- Take picture btn -->
+    <!-- Camera -->
+    <main id="camera">
+        <!-- Camera sensor -->
+        <canvas id="camera--sensor"></canvas>
+        <!-- Camera view -->
+        <video id="camera--view" autoplay playsinline></video>
+        <!-- Camera output -->
+        <img src="//:0" alt="" id="camera--output">
+        <!-- Camera trigger -->
 		<div class="capture-button">
-			<button class="red" id="capture"></button>
+			<button class="red" id="camera--trigger"></button>
 		</div>
-
-		<canvas id="picture"></canvas>
-	</div>
-
-	<script src="js/app.js"></script>
-	<script src="js/cam.js"></script>
-
+        
+    </main>
+    <!-- Reference to your JavaScript file -->
+    <script src="js/app.js"></script>
+    <script src="js/cam.js"></script>
+</body>
 </html>
