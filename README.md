@@ -21,7 +21,7 @@ Go to this link: https://i488547.hera.fhict.nl/camera/index.html on your mobile 
 
 ## UI
 
-<img width="436" alt="Screenshot 2023-05-19 at 01 50 49" src="https://github.com/mendaayy/Bereal/assets/122844229/423f7bf2-9774-4737-8e88-bb438501659f">
-<img width="436" alt="Screenshot 2023-05-19 at 01 51 01" src="https://github.com/mendaayy/Bereal/assets/122844229/183cfaf6-f8af-496c-a70b-a3c767a888c4">
-<img width="436" alt="Screenshot 2023-05-19 at 01 52 51" src="https://github.com/mendaayy/Bereal/assets/122844229/7828969c-ccaf-45ad-8cb1-f4f46d0c5a09">
-<img width="436" alt="Screenshot 2023-05-19 at 01 51 17" src="https://github.com/mendaayy/Bereal/assets/122844229/276feebb-fdc3-40cb-b161-d7b5496f76b9">
+<img width="200" alt="Screenshot 2023-05-19 at 01 50 49" src="https://github.com/mendaayy/Bereal/assets/122844229/423f7bf2-9774-4737-8e88-bb438501659f">
+<img width="200" alt="Screenshot 2023-05-19 at 01 51 01" src="https://github.com/mendaayy/Bereal/assets/122844229/183cfaf6-f8af-496c-a70b-a3c767a888c4">
+<img width="200" alt="Screenshot 2023-05-19 at 01 52 51" src="https://github.com/mendaayy/Bereal/assets/122844229/7828969c-ccaf-45ad-8cb1-f4f46d0c5a09">
+<img width="200" alt="Screenshot 2023-05-19 at 01 51 17" src="https://github.com/mendaayy/Bereal/assets/122844229/276feebb-fdc3-40cb-b161-d7b5496f76b9">
