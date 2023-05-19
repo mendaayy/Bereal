@@ -1,6 +1,6 @@
 # Double Camera
 
-PWA: https://i488547.hera.fhict.nl/camera/index.html 
+PWA: https://i488547.hera.fhict.nl/camera/index.html (Works only on mobile)
 
 ## Introduction
 This is my first ever Progressive Web App. I took inspiration from the app Bereal for my PWA; it takes a picture from the front camera after a countdown of 3 seconds and then takes a picture from the back camera after another countdown. It also allows you to save the complete image in the end by using the HTML2Canvas Library. 
@@ -11,9 +11,13 @@ This is my first ever Progressive Web App. I took inspiration from the app Berea
 - HTML & CSS
 - HTML2Canvas
 
-## Progress 
+## Process 
 After following some workshops, I learned how to set up a PWA. So I got started with that first, generating a manifest file and service worker. I also did some offline caching so th eapp can be used offline. Then, i got started with coding the app. This project wasn't the hardest, but the main problem I experienced was that Safari keeps showing me the older version of my app even when I updated the newest one to FileZilla. At first, I did not know that Safari was showing me the older version, I thought that my code was just not working/doing anything. So, I kept modifying the code and updating, which cost me a lot of time when the code was not the problem. It was due to the fact that Safari stores the PWA cache so I had to clear the History & Website Data each time through Apple's Settings. 
 I also struggled with the horizontal flip of the screens. After a while, I found out that only the front-camera mirrors the screen and the back camera doesn't, so I had to find a way to apply the horizontal flip to only the front camera, which was easy to do.
+
+## Installation
+
+Go to this link: https://i488547.hera.fhict.nl/camera/index.html on your mobile (and if you want, you can install it onto your homepage).
 
 ## UI
 
